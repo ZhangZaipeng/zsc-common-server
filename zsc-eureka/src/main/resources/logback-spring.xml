@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
 	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
 	​
-	<springProperty scope="context" name="springAppName"
-		source="spring.application.name" />
-	<springProperty scope="context" name="logstashHost"
-		source="tony_public_logstash_tcp_host" />
+	<springProperty scope="context" name="springAppName" source="spring.application.name" />
+	<!-- yml中取 logstashHost -->
+	<springProperty scope="context" name="logstashHost" source="${logstashHost}" />
 	<!-- You can override this to have a custom pattern -->
 	<property name="CONSOLE_LOG_PATTERN"
 		value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}" />
 
-	<springProfile name="!prod">
-		<!-- 非生产环境下才会加载的 -->
+	<springProfile name="dev">
+		<!-- 开发环境 -->
 		<!-- Appender to log to console -->
 		<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -22,6 +21,17 @@
 				<pattern>${CONSOLE_LOG_PATTERN}</pattern>
 				<charset>utf8</charset>
 			</encoder>
+		</appender>
+	</springProfile>
+
+	<springProfile name="test">
+		<!-- test 环境 -->
+		<!-- Appender to log to console -->
+		<appender name="console"
+				  class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+			<destination>${logstashHost}</destination>
+			<!-- encoder is required -->
+			<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
 		</appender>
 	</springProfile>
 
@@ -37,9 +47,10 @@
 
 
 
-	<logger name="com.dongnaoedu" level="debug" />
+	<logger name="com.zsc" level="debug" />
 	<logger name="com.netflix.eureka" level="warn" />
 	<logger name="org.springcloud" level="warn" />
+
 	<root level="warn">
 		<appender-ref ref="console" />
 	</root>

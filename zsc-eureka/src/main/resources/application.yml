@@ -2,6 +2,8 @@
 info:
   name: Eureka server
 
+logstashHost: logstash:4560
+
 spring:
   profiles:
     active: dev
@@ -39,13 +41,14 @@ eureka:
     fetchRegistry: false
     # eureka server地址
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL}
   server:
     waitTimeInMsWhenSyncEmpty: 0
     # false 关闭自我保护，不管如何都要剔除心跳检测异常的服务
     enableSelfPreservation: false
   instance:
-    hostname: eureka1
+    # compose - environment HOSTNAME
+    hostname: ${HOSTNAME}
 
 ---
 spring:
@@ -57,7 +60,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: ${tony_eureka_serviceUrl}
+      defaultZone: ${EUREKA_SERVICE_URL}
   server:
     waitTimeInMsWhenSyncEmpty: 0
     # false 关闭自我保护，不管如何都要剔除心跳检测异常的服务
