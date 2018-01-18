@@ -29,6 +29,9 @@ services:
       # 实例数量
       replicas: 1
       # 更新选项
+      placement:
+        constraints:
+          - node.role == worker
       update_config:
         # 每次更新多少个容器
         parallelism: 1
@@ -68,6 +71,9 @@ services:
     deploy:
       # 实例数量
       replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
       # 更新选项
       update_config:
         # 每次更新多少个容器
@@ -118,6 +124,9 @@ services:
     deploy:
       # 实例数量
       replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
       # 更新选项
       update_config:
         # 每次更新多少个容器
