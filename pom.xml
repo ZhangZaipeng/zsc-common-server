@@ -19,6 +19,7 @@
 
 	<modules>
 		<module>zsc-eureka</module>
+		<module>zsc-config</module>
 	</modules>	
 	
 	<properties>
