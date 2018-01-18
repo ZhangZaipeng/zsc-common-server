@@ -2,6 +2,7 @@
 info:
   name: Eureka server
 
+# logback 配置 logstash
 logstashHost: logstash:4560
 
 spring:

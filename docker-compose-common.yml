@@ -92,7 +92,14 @@ services:
       - "8888:8888"
     env_file:
       # 加载环境变量
-      - ./service.env
+    environment:
+      - PUBLIC_RABBITMQ_HOST="rabbitmq"
+      - PUBLIC_RABBITMQ_USERNAME="guest"
+      - PUBLIC_RABBITMQ_PASSWORD="guest"
+      - CONFIG_SERVER_SECURITY_NAME="tony"
+      - CONFIG_SERVER_SECURITY_PASSWORD="12345678"
+      - CONFIG_SERVER_ENCRYPT_KEY="12345678"
+      - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
     networks:
       # 加入集群网络
       - swarm_net
