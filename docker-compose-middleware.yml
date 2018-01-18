@@ -138,6 +138,11 @@ services:
       - "5000:5000"
     networks:
       - swarm_net
+    volumes:
+      # 将宿主机上的文件挂载到容器内
+      - type: "bind"
+        source: /data/registry
+        target: /var/lib/registry
     deploy:
       replicas: 1
       placement:

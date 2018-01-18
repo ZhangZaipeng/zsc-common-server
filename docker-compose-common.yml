@@ -16,7 +16,7 @@ services:
       - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
       - HOSTNAME="eureka1"
       - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Xms128m -Xmx256m -Dspring.profiles.active=prod"
+      - JAVA_OPTS="-Dspring.profiles.active=prod"
     networks:
       # 加入集群网络
       - swarm_net
@@ -61,7 +61,7 @@ services:
       - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
       - HOSTNAME="eureka2"
       - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Xms128m -Xmx256m -Dspring.profiles.active=prod"
+      - JAVA_OPTS="-Dspring.profiles.active=prod"
     networks:
       # 加入集群网络
       - swarm_net
@@ -109,7 +109,7 @@ services:
       - CONFIG_SERVER_ENCRYPT_KEY="12345678"
       - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
       - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Xms128m -Xmx256m -Dspring.profiles.active=prod"
+      - JAVA_OPTS="-Dspring.profiles.active=prod"
     networks:
       # 加入集群网络
       - swarm_net
