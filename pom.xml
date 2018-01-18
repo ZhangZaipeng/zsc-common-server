@@ -8,7 +8,7 @@
 	<artifactId>zsc-common-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>zsc-server ${project.version}</name>
+	<name>zsc-common-server ${project.version}</name>
 	
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -32,10 +32,10 @@
     </properties>
 
 	<dependencies>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-netflix-eureka-client</artifactId>
@@ -65,10 +65,10 @@
 			</dependency>
 
 			<!-- spring-boot-starter-actuator 管理工具/web 查看堆栈，动态刷新配置 -->
-			<dependency>
+			<!--<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-actuator</artifactId>
-			</dependency>
+			</dependency>-->
 		</dependencies>
 	</dependencyManagement>
     
