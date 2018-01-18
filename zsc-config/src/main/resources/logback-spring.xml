@@ -39,7 +39,7 @@
 		<!-- 生产环境下才会加载的 -->
 		<appender name="console"
 			class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-			<destination>${logstashHost}</destination>
+			<destination>logstash:4560</destination>
 			<!-- encoder is required -->
 			<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
 		</appender>
