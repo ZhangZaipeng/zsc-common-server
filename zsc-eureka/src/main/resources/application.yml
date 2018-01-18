@@ -2,8 +2,7 @@
 info:
   name: Eureka server
 
-# logback 配置 logstash
-logstashHost: logstash:4560
+
 
 spring:
   profiles:
@@ -28,7 +27,8 @@ eureka:
     enableSelfPreservation: false
   instance:
     hostname: eureka1
-
+# logback 配置 logstash
+logstashHost: http://127.0.0.1:4560
 ---
 spring:
   profiles: test
@@ -50,6 +50,7 @@ eureka:
   instance:
     # compose - environment HOSTNAME
     hostname: ${HOSTNAME}
+logstashHost: ${LOGSTASH_HOST}
 
 ---
 spring:
@@ -72,3 +73,4 @@ eureka:
     responseCacheUpdateIntervalMs: 30000
   instance:
     hostname: ${HOSTNAME}
+logstashHost: ${LOGSTASH_HOST}

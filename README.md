@@ -1,1 +1,1 @@
-# hwz-server
+# zsc-server
