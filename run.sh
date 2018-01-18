@@ -5,7 +5,7 @@ set -x
 export DOCKER_REGISTRY_URL="123.207.79.123:5000"
 
 # spring boot 环境选择
-mvn clean package -Dprofiles.active=prod
+mvn clean package
 
 # 获取run.sh当前目录
 dir=$(cd `dirname $0`; pwd)
