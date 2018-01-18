@@ -2,7 +2,7 @@
 set -x
 
 # docker 仓库 env.DOCKER_REGISTRY_URL
-export DOCKER_REGISTRY_URL="www.zhangzp.cn:5000"
+export DOCKER_REGISTRY_URL="0.0.0.0:5000"
 
 # spring boot 环境选择
 mvn clean package
