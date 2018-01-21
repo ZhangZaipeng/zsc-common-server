@@ -1,9 +1,6 @@
 info:
   name: 配置中心
 
-# logback 配置 logstash
-logstashHost: logstash:4560
-
 spring:
   profiles:
     active: dev
@@ -46,7 +43,6 @@ eureka:
     # 心跳间隔
     leaseRenewalIntervalInSeconds: 10
 # logback 配置 logstash
-logstashHost: http://127.0.0.1:4560
 ---
 spring:
   profiles: test
@@ -85,7 +81,6 @@ eureka:
     preferIpAddress: true
     # 心跳间隔
     leaseRenewalIntervalInSeconds: 10
-logstashHost: ${LOGSTASH_HOST}
 ---
 spring:
   profiles: prod
@@ -124,4 +119,3 @@ eureka:
     preferIpAddress: true
     # 心跳间隔
     leaseRenewalIntervalInSeconds: 10
-logstashHost: ${LOGSTASH_HOST}
