@@ -86,11 +86,11 @@ services:
           # 内存限制
           memory: 256M
   # 3、配置中心
-  config-server:
+  config:
     # 镜像地址
-    image: 123.207.79.123:5000/config-server:0.0.1-SNAPSHOT
+    image: 123.207.79.123:5000/zsc-config:0.0.1-SNAPSHOT
     # 容器名称
-    container_name: config-server
+    container_name: config
     ports:
       # 端口映射
       - "8888:8888"
