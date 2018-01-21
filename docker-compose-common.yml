@@ -13,10 +13,10 @@ services:
       - "8761:8761"
     environment:
       # hostname URL
-      - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
-      - HOSTNAME="eureka1"
-      - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Dspring.profiles.active=prod"
+      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
+      - HOSTNAME=eureka1
+      - LOGSTASH_HOST=logstash:4560
+      - JAVA_OPTS=-Dspring.profiles.active=prod
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
@@ -55,10 +55,10 @@ services:
       - "8762:8761"
     environment:
       # hostname
-      - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
-      - HOSTNAME="eureka2"
-      - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Dspring.profiles.active=prod"
+      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
+      - HOSTNAME=eureka2
+      - LOGSTASH_HOST=logstash:4560
+      - JAVA_OPTS=-Dspring.profiles.active=prod
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
@@ -95,15 +95,15 @@ services:
       # 端口映射
       - "8888:8888"
     environment:
-      - PUBLIC_RABBITMQ_HOST="rabbitmq"
-      - PUBLIC_RABBITMQ_USERNAME="guest"
-      - PUBLIC_RABBITMQ_PASSWORD="guest"
-      - CONFIG_SERVER_SECURITY_NAME="tony"
-      - CONFIG_SERVER_SECURITY_PASSWORD="12345678"
-      - CONFIG_SERVER_ENCRYPT_KEY="12345678"
-      - EUREKA_SERVICE_URL="http://eureka1:8761/eureka/,http://eureka2:8761/eureka/"
-      - LOGSTASH_HOST="logstash:4560"
-      - JAVA_OPTS="-Dspring.profiles.active=prod"
+      - PUBLIC_RABBITMQ_HOST=rabbitmq
+      - PUBLIC_RABBITMQ_USERNAME=guest
+      - PUBLIC_RABBITMQ_PASSWORD=guest
+      - CONFIG_SERVER_SECURITY_NAME=tony
+      - CONFIG_SERVER_SECURITY_PASSWORD=12345678
+      - CONFIG_SERVER_ENCRYPT_KEY=12345678
+      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
+      - LOGSTASH_HOST=logstash:4560
+      - JAVA_OPTS=-Dspring.profiles.active=prod
     # 在eureka容器之后启动
     depends_on:
       - eureka1
