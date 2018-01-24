@@ -1,7 +1,7 @@
 spring:
   application:
     # 配置文件就是用这个来做文件名的，要对应的哦。
-    name: config-server
+    name: zsc-config
   profiles:
     active: native
   cloud:
@@ -13,10 +13,12 @@ spring:
         # git仓库 gitlab地址
         git:
           # 记得在先gitlab上创建一个对应的project
-          uri: ${tony_configserver_git_uri:"http://192.168.99.100:18080/root/configRepo.git"}
+          uri: ${configserver_git_uri:"http://192.168.99.100:18080/root/configRepo.git"}
           search-paths: /
-          username: ${tony_configserver_git_username:root}
-          password: ${tony_configserver_git_password:12345678}
+          username: ${configserver_git_username:root}
+          password: ${configserver_git_password:12345678}
+          repos:
+            # 不同环境不同的库
         # 加解密
         encrypt:
           enabled: true
