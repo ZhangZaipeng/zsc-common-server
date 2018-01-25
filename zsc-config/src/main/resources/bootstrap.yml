@@ -13,10 +13,10 @@ spring:
         # git仓库 gitlab地址
         git:
           # 记得在先gitlab上创建一个对应的project
-          uri: ${tony_configserver_git_uri:"http://192.168.99.100:18080/root/configRepo.git"}
+          uri: ${configserver_git_uri:"https://github.com/ZhangZaipeng/helloworld.git"}
           search-paths: /
-          username: ${tony_configserver_git_username:root}
-          password: ${tony_configserver_git_password:12345678}
+          username: ${configserver_git_username:282354184@qq.com}
+          password: ${configserver_git_password:a6221121}
         # 加解密
         encrypt:
           enabled: true
