@@ -1,0 +1,25 @@
+version: "3.2"
+services:
+  elasticsearch:
+    image: elasticsearch:latest
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      #- ES_JAVA_OPTS="-Xms1024m -Xmx1024m"
+      - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M

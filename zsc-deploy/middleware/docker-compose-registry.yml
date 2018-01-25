@@ -1,0 +1,27 @@
+# 运行私有仓库。  公共的存储镜像的地方
+version: "3.2"
+services:
+  registry:
+    image: registry:latest
+    container_name: registry
+    ports:
+      - "5000:5000"
+    volumes:
+      # 将宿主机上的文件挂载到容器内
+      - type: "bind"
+        source: /data/registry
+        target: /var/lib/registry
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M

@@ -37,11 +37,21 @@
 
 	<springProfile name="prod">
 		<!-- 生产环境下才会加载的 -->
-		<appender name="console"
+		<!--<appender name="console"
 			class="net.logstash.logback.appender.LogstashTcpSocketAppender">
 			<destination>logstash:4560</destination>
-			<!-- encoder is required -->
+			&lt;!&ndash; encoder is required &ndash;&gt;
 			<encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+		</appender>-->
+		<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+				<!-- Minimum logging level to be presented in the console logs -->
+				<level>DEBUG</level>
+			</filter>
+			<encoder>
+				<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+				<charset>utf8</charset>
+			</encoder>
 		</appender>
 	</springProfile>
 
@@ -49,7 +59,7 @@
 	<logger name="com.netflix.eureka" level="warn" />
 	<logger name="org.springcloud" level="warn" />
 
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="console"/>
 	</root>
 </configuration>

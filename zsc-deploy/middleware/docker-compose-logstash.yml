@@ -1,0 +1,25 @@
+# 数据汇集的工具，比如：应用日志，logback直接输出到logstash的tcp通道，logstash在存储到es
+version: "3.2"
+services:
+  logstash:
+    image: logstash:latest
+    container_name: logstash
+    ports:
+      - "4560:4560"
+    command: logstash -e 'input { tcp { host => "0.0.0.0" port => "4560" mode => "server" codec => json_lines } } output { stdout{ codec => rubydebug } elasticsearch{ hosts => ["elasticsearch:9200"] index => "log4j-%{+YYYY.MM.dd}" document_type => "log4j_type" } }'
+    depends_on:
+      - elasticsearch
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M

@@ -1,0 +1,27 @@
+# 运行zipkin。   分布式调用链路追踪，可视化分析工具
+version: "3.2"
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - ES_HOSTS=http://elasticsearch:9200
+      - STORAGE_TYPE=elasticsearch
+    depends_on:
+      - elasticsearch
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
