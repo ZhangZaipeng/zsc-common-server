@@ -10,8 +10,6 @@ services:
       - "25672:25672"
       - "15671:15671"
       - "15672:15672"
-    networks:
-      - swarm_net
     deploy:
       replicas: 1
       placement:
@@ -33,8 +31,6 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    networks:
-      - swarm_net
     environment:
       #- ES_JAVA_OPTS="-Xms1024m -Xmx1024m"
       - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
@@ -58,8 +54,6 @@ services:
     container_name: kibana
     ports:
       - "5601:5601"
-    networks:
-      - swarm_net
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
@@ -84,8 +78,6 @@ services:
     container_name: logstash
     ports:
       - "4560:4560"
-    networks:
-      - swarm_net
     command: logstash -e 'input { tcp { host => "0.0.0.0" port => "4560" mode => "server" codec => json_lines } } output { stdout{ codec => rubydebug } elasticsearch{ hosts => ["elasticsearch:9200"] index => "log4j-%{+YYYY.MM.dd}" document_type => "log4j_type" } }'
     depends_on:
       - elasticsearch
@@ -109,8 +101,6 @@ services:
     container_name: zipkin
     ports:
       - "9411:9411"
-    networks:
-      - swarm_net
     environment:
       - ES_HOSTS=http://elasticsearch:9200
       - STORAGE_TYPE=elasticsearch
@@ -136,8 +126,6 @@ services:
     container_name: registry
     ports:
       - "5000:5000"
-    networks:
-      - swarm_net
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
@@ -157,5 +145,3 @@ services:
         limits:
           cpus: '0.5'
           memory: 128M
-networks:
-  - swarm_net
