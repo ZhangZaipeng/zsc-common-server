@@ -4,12 +4,12 @@ management:
   security:
     enabled: false
 
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: 121.43.173.215
-    username: guest
-    password: guest
+#spring:
+#  # rabbitmq的地址 用户名 密码
+#  rabbitmq:
+#    host: 121.43.173.215
+#    username: guest
+#    password: guest
 #  sleuth:
 #    sampler:
 #      # 1、采样比例
