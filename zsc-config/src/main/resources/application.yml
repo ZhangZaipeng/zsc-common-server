@@ -4,9 +4,15 @@ info:
 spring:
   profiles:
     active: dev
+
 ---
 spring:
   profiles: dev
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: www.zhangzp.cn
+    username: guest
+    password: guest
 server:
   port: 8888
 # 使得/refresh不需要验权
@@ -25,12 +31,7 @@ security:
 encrypt:
   # 加解密用的秘钥
   key: 12345678
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: 127.0.0.1
-    username: guest
-    password: guest
+
 eureka:
   client:
     registerWithEureka: true
@@ -42,9 +43,15 @@ eureka:
     # 心跳间隔
     leaseRenewalIntervalInSeconds: 10
 # logback 配置 logstash
+
 ---
 spring:
   profiles: test
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
+    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
+    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
 server:
   port: 8888
 # 使得/refresh不需要验权
@@ -64,13 +71,6 @@ security:
 encrypt:
   # 加解密用的秘钥
   key: ${CONFIG_SERVER_ENCRYPT_KEY:12345678}
-
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
-    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
-    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
 
 eureka:
   client:
@@ -82,9 +82,16 @@ eureka:
     preferIpAddress: true
     # 心跳间隔
     leaseRenewalIntervalInSeconds: 10
+
 ---
 spring:
   profiles: prod
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
+    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
+    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
+
 server:
   port: 8888
 # 使得/refresh不需要验权
@@ -104,13 +111,6 @@ security:
 encrypt:
   # 加解密用的秘钥
   key: ${CONFIG_SERVER_ENCRYPT_KEY:12345678}
-
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
-    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
-    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
 
 eureka:
   client:
