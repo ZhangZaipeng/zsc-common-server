@@ -13,7 +13,7 @@ services:
       - PUBLIC_RABBITMQ_HOST=rabbitmq
       - PUBLIC_RABBITMQ_USERNAME=guest
       - PUBLIC_RABBITMQ_PASSWORD=guest
-      - CONFIG_SERVER_SECURITY_NAME=tony
+      - CONFIG_SERVER_SECURITY_NAME=user
       - CONFIG_SERVER_SECURITY_PASSWORD=12345678
       - CONFIG_SERVER_ENCRYPT_KEY=12345678
       - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
