@@ -3,18 +3,18 @@
 
 version: "3.2"
 services:
-  eureka1:
+  zsc-eureka-1:
     # 镜像地址
     image: 123.207.79.123:5000/zsc-eureka:0.0.1-SNAPSHOT
     # 容器名称
-    container_name: eureka1
+    container_name: zsc-eureka-1
     ports:
       # 端口映射,这里单纯的是为了在外部能够访问eureka
       - "8761:8761"
     environment:
       # hostname URL
-      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
-      - HOSTNAME=eureka1
+      - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
+      - HOSTNAME=zsc-eureka-1
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
     volumes:
@@ -45,18 +45,18 @@ services:
           # 内存限制
           memory: 256M
   # 2、eureka2
-  eureka2:
+  zsc-eureka-2:
     # 镜像地址
     image: 123.207.79.123:5000/zsc-eureka:0.0.1-SNAPSHOT
     # 容器名称
-    container_name: eureka2
+    container_name: zsc-eureka-2
     ports:
       # 端口映射
       - "8762:8761"
     environment:
       # hostname
-      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
-      - HOSTNAME=eureka2
+      - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
+      - HOSTNAME=zsc-eureka-2
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
     volumes:
@@ -86,11 +86,11 @@ services:
           # 内存限制
           memory: 256M
   # 3、配置中心
-  config:
+  zsc-config:
     # 镜像地址
     image: 123.207.79.123:5000/zsc-config:0.0.1-SNAPSHOT
     # 容器名称
-    container_name: config
+    container_name: zsc-config
     ports:
       # 端口映射
       - "8888:8888"
@@ -101,13 +101,13 @@ services:
       - CONFIG_SERVER_SECURITY_NAME=tony
       - CONFIG_SERVER_SECURITY_PASSWORD=12345678
       - CONFIG_SERVER_ENCRYPT_KEY=12345678
-      - EUREKA_SERVICE_URL=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/
+      - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
     # 在eureka容器之后启动
     depends_on:
-      - eureka1
-      - eureka2
+      - zsc-eureka-1
+      - zsc-eureka-2
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"

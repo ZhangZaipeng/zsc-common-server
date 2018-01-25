@@ -13,12 +13,6 @@ server:
 management:
   security:
     enabled: false
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: 127.0.0.1
-    username: guest
-    password: guest
 # 访问时需要提供用户和密码
 security:
   basic:
@@ -26,12 +20,17 @@ security:
   # 这个接口不做用户名密码校验, /monitor接收git刷新通知
   ignored: /monitor
   user:
-    name: tony
+    name: user
     password: 12345678
 encrypt:
   # 加解密用的秘钥
   key: 12345678
-
+spring:
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: 127.0.0.1
+    username: guest
+    password: guest
 eureka:
   client:
     registerWithEureka: true
@@ -52,12 +51,7 @@ server:
 management:
   security:
     enabled: false
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
-    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
-    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
+
 # 访问时需要提供用户和密码
 security:
   basic:
@@ -65,11 +59,18 @@ security:
   # 这个接口不做用户名密码校验, /monitor接收git刷新通知
   ignored: /monitor
   user:
-    name: ${CONFIG_SERVER_SECURITY_NAME:tony}
+    name: ${CONFIG_SERVER_SECURITY_NAME:user}
     password: ${CONFIG_SERVER_SECURITY_PASSWORD:12345678}
 encrypt:
   # 加解密用的秘钥
   key: ${CONFIG_SERVER_ENCRYPT_KEY:12345678}
+
+spring:
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
+    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
+    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
 
 eureka:
   client:
@@ -90,12 +91,7 @@ server:
 management:
   security:
     enabled: false
-spring:
-  # rabbitmq的地址 用户名 密码
-  rabbitmq:
-    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
-    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
-    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
+
 # 访问时需要提供用户和密码
 security:
   basic:
@@ -103,11 +99,18 @@ security:
   # 这个接口不做用户名密码校验, /monitor接收git刷新通知
   ignored: /monitor
   user:
-    name: ${CONFIG_SERVER_SECURITY_NAME:tony}
+    name: ${CONFIG_SERVER_SECURITY_NAME:user}
     password: ${CONFIG_SERVER_SECURITY_PASSWORD:12345678}
 encrypt:
   # 加解密用的秘钥
   key: ${CONFIG_SERVER_ENCRYPT_KEY:12345678}
+
+spring:
+  # rabbitmq的地址 用户名 密码
+  rabbitmq:
+    host: ${PUBLIC_RABBITMQ_HOST:rabbitmq}
+    username: ${PUBLIC_RABBITMQ_USERNAME:guest}
+    password: ${PUBLIC_RABBITMQ_PASSWORD:guest}
 
 eureka:
   client:
