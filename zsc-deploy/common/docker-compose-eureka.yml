@@ -17,6 +17,9 @@ services:
       - HOSTNAME=zsc-eureka-1
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
+    networks:
+      # 加入集群网络
+      - swarm_net
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
@@ -59,6 +62,9 @@ services:
       - HOSTNAME=zsc-eureka-2
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
+    networks:
+      # 加入集群网络
+      - swarm_net
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
@@ -85,3 +91,6 @@ services:
           cpus: '0.5'
           # 内存限制
           memory: 256M
+
+networks:
+  swarm_net:

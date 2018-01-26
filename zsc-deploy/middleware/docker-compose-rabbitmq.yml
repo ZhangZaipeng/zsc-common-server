@@ -11,6 +11,9 @@ services:
       - "25672:25672"
       - "15671:15671"
       - "15672:15672"
+    networks:
+      # 加入集群网络
+      - swarm_net
     deploy:
       replicas: 1
       placement:
@@ -25,3 +28,5 @@ services:
         limits:
           cpus: '0.5'
           memory: 256M
+networks:
+  swarm_net:

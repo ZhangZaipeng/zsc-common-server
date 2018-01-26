@@ -9,6 +9,9 @@ services:
     ports:
       # 端口映射
       - "8888:8888"
+    networks:
+      # 加入集群网络
+      - swarm_net
     environment:
       - PUBLIC_RABBITMQ_HOST=rabbitmq
       - PUBLIC_RABBITMQ_USERNAME=guest
@@ -49,3 +52,5 @@ services:
           cpus: '0.5'
           # 内存限制
           memory: 256M
+networks:
+  swarm_net:
