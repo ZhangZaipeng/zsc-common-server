@@ -23,9 +23,9 @@ services:
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
     # 在eureka容器之后启动
-    depends_on:
-      - zsc-eureka-1
-      - zsc-eureka-2
+#    depends_on:
+#      - zsc-eureka-1
+#      - zsc-eureka-2
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
