@@ -22,6 +22,9 @@ services:
       - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
+      - configserver_git_uri=http://gitlab:80/root/configRepo.git
+      - configserver_git_username=root
+      - configserver_git_password=123456
     # 在eureka容器之后启动
 #    depends_on:
 #      - zsc-eureka-1

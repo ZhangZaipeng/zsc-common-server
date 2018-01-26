@@ -1,0 +1,24 @@
+# 文件版本管理工具
+version: "3.2"
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    ports:
+      - "1443:443"
+      - "18080:80"
+    networks:
+      - swarm_net
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+networks:
+  swarm_net:
