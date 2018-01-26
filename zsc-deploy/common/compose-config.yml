@@ -32,8 +32,8 @@ services:
     volumes:
       # 将宿主机上的文件挂载到容器内
       - type: "bind"
-        source: /etc/localtime
-        target: /etc/localtime
+        source: /data/zsc-config
+        target: /data/zsc-config
     deploy:
       # 实例数量
       replicas: 1
