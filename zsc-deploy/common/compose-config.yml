@@ -24,7 +24,7 @@ services:
       - JAVA_OPTS=-Dspring.profiles.active=prod
       - configserver_git_uri=http://gitlab:80/root/configRepo.git
       - configserver_git_username=root
-      - configserver_git_password=123456
+      - configserver_git_password=12345678
     # 在eureka容器之后启动
 #    depends_on:
 #      - zsc-eureka-1
