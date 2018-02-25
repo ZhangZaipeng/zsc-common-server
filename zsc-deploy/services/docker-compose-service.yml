@@ -55,5 +55,3 @@ services:
   
 networks:
   swarm_net:
-    external: true
-  
