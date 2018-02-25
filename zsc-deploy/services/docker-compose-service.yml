@@ -8,6 +8,15 @@ services:
     image: 123.207.79.123:5000/zsc-service-one:0.0.1-SNAPSHOT
     # 容器名称
     container_name: zsc-service-one
+    ports:
+      # 端口映射
+      - "9005:9005"
+    environment:
+      # hostname URL
+      - EUREKA_SERVICE_URL=http://zsc-eureka-1:8761/eureka/,http://zsc-eureka-2:8761/eureka/
+      - HOSTNAME=zsc-service-one
+      - LOGSTASH_HOST=logstash:4560
+      - JAVA_OPTS=-Dspring.profiles.active=prod
     networks:
       # 加入集群网络
       - swarm_net
