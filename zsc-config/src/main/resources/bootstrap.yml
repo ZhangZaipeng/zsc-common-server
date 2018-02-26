@@ -3,7 +3,7 @@ spring:
     # 配置文件就是用这个来做文件名的，要对应的哦。
     name: zsc-config
   profiles:
-    active: dev,native
+    active: native
   cloud:
     config:
       server:

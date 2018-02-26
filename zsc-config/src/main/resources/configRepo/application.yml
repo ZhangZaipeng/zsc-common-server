@@ -1,4 +1,5 @@
 # 公共配置
+
 # 使得/refresh不需要验权
 management:
   security:

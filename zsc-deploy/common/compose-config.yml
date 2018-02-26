@@ -23,7 +23,7 @@ services:
       - LOGSTASH_HOST=logstash:4560
       - JAVA_OPTS=-Dspring.profiles.active=prod
       #- configserver_git_uri=http://gitlab:80/root/configRepo.git
-      - configserver_git_uri=file:////data/zsc-config
+      - configserver_git_uri=file:///data/zsc-config
       - configserver_git_username=root
       - configserver_git_password=12345678
     # 在eureka容器之后启动
