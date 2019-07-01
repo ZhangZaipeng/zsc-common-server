@@ -47,6 +47,14 @@ services:
           cpus: '0.5'
           # 内存限制
           memory: 256M
+    healthcheck:
+      # 命令
+      test: ["CMD","curl","-f","http://localhost:8761/info"]
+      # 间隔时间，安装应用的预计东起时间来设置
+      interval: 1m30s
+      timeout: 10s
+      # 重式次数
+      retries: 5
   # 2、eureka2
   zsc-eureka-2:
     # 镜像地址
